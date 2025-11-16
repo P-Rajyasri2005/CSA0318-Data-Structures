@@ -1,0 +1,29 @@
+#include <stdio.h>
+
+int main() {
+    int n;
+    printf("Enter size of array: ");
+    scanf("%d", &n);
+
+    int a[n], visited[n];
+    for(int i=0; i<n; i++) visited[i] = 0;
+
+    printf("Enter array elements:\n");
+    for(int i=0; i<n; i++)
+        scanf("%d", &a[i]);
+
+    for(int i=0; i<n; i++) {
+        if(visited[i] == 1) continue;
+
+        int count = 1;
+        for(int j=i+1; j<n; j++) {
+            if(a[i] == a[j]) {
+                count++;
+                visited[j] = 1;
+            }
+        }
+        printf("%d occurs %d times\n", a[i], count);
+    }
+
+    return 0;
+}
